@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>FF Sensitivity Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="box">
+  <h1>🔥 FF SENSI TOOL 🔥</h1>
+
+  <label>General</label>
+  <input type="range" min="0" max="100" value="90" id="general">
+  <span id="gVal">90</span>
+
+  <label>Red Dot</label>
+  <input type="range" min="0" max="100" value="85" id="reddot">
+  <span id="rVal">85</span>
+
+  <label>2x Scope</label>
+  <input type="range" min="0" max="100" value="80" id="scope2x">
+  <span id="s2Val">80</span>
+
+  <label>4x Scope</label>
+  <input type="range" min="0" max="100" value="75" id="scope4x">
+  <span id="s4Val">75</span>
+
+  <label>AWM Scope</label>
+  <input type="range" min="0" max="100" value="60" id="awm">
+  <span id="aVal">60</span>
+
+  <button onclick="copySensi()">📋 Salin Setelan</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+body {
+  background: #0b0b0b;
+  color: white;
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  background: #111;
+  padding: 20px;
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px red;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type=range] {
+  width: 100%;
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: red;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+const general = document.getElementById("general");
+const reddot = document.getElementById("reddot");
+const scope2x = document.getElementById("scope2x");
+const scope4x = document.getElementById("scope4x");
+const awm = document.getElementById("awm");
+
+general.oninput = () => gVal.innerText = general.value;
+reddot.oninput = () => rVal.innerText = reddot.value;
+scope2x.oninput = () => s2Val.innerText = scope2x.value;
+scope4x.oninput = () => s4Val.innerText = scope4x.value;
+awm.oninput = () => aVal.innerText = awm.value;
+
+function copySensi() {
+  const text = `
+General: ${general.value}
+Red Dot: ${reddot.value}
+2x Scope: ${scope2x.value}
+4x Scope: ${scope4x.value}
+AWM: ${awm.value}
+  `;
+  navigator.clipboard.writeText(text);
+  alert("Sensi disalin!");
+}
